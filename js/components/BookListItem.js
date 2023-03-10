@@ -20,7 +20,7 @@ app.component('BookListItem', {
     <q-card class="book-card" @mouseenter="visible = true" @mouseleave="visible = false">
 
       <q-card-section horizontal class="card-header book-card-header">
-        <q-btn flat rounded @click="$emit('bookmark-book',book)" :icon="book.bookmark ? 'bookmark' : 'bookmark_outline' "/>
+        <q-btn flat rounded @click="$emit('bookmark-book', book)" :icon="book.bookmark ? 'bookmark' : 'bookmark_outline' "/>
         <span class="text-h6">{{ trunc(book.title, 38) }}</span>
       </q-card-section>
 
@@ -40,12 +40,12 @@ app.component('BookListItem', {
 <!--            Info-->
 <!--          </q-tooltip>-->
 <!--        </q-btn>-->
-        <q-btn flat icon="edit" @click="$emit('edit-book',book)">
+        <q-btn flat icon="edit" @click="$emit('edit-book', book)">
           <q-tooltip anchor="top middle" self="bottom middle">
             Edit
           </q-tooltip>
         </q-btn>
-        <q-btn flat icon="delete" @click="$emit('delete-book',book)">
+        <q-btn flat icon="delete" @click="$emit('delete-book', book)">
           <q-tooltip anchor="top middle" self="bottom middle">
             Delete
           </q-tooltip>

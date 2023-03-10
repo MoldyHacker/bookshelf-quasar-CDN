@@ -1,9 +1,5 @@
-app.component('AddBookManualDialog', {
-    props: {
-        modelValue: {
-            type: Boolean,
-        },
-    },
+app.component('EditBookDialog', {
+    props: ['modelValue', 'book'],
     emits: ['update:modelValue'],
     data() {
         return {
@@ -26,30 +22,25 @@ app.component('AddBookManualDialog', {
         }
     },
     methods: {
-        addBook() {
-            this.$emit('add-item', this.newBook);
+        editBook() {
+            this.$emit('edit-item', this.newBook);
             console.log(this.newBook);
             this.resetBook();
 
         },
         resetBook() {
-            this.newBook = {
-                title: '',
-                author: '',
-                bookmark: '',
-                tags: '',
-            }
+            console.log('edit the book',this.book)
         }
     },
     template: `
     <q-dialog persistent v-model="value">
         <q-card>
           <q-card-section>
-            <div class="text-h6">Add Book Manually</div>
+            <div class="text-h6">Edit Book</div>
           </q-card-section>
 
           <q-card-section class="q-pt-none q-gutter-sm">
-            <q-input autofocus filled v-model="newBook.title" label="Title">
+            <q-input autofocus filled v-model="book" label="Title">
               <template v-slot:prepend>
                 <q-icon name="menu_book" />
               </template>

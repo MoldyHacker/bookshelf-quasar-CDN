@@ -34,10 +34,11 @@
 
       <q-page-container>
 <!--        <router-view />-->
-        <book-list :books="books" @bookmark-book="bookmarkBook" @delete-book="removeBook" @edit-book="editIt"></book-list>
+        <book-list :books="books" :sortText="sortText" :filterText="filterText" @bookmark-book="bookmarkBook" @delete-book="removeBook" @edit-book="editBook; editDialog = true"></book-list>
 
         <add-book-auto-dialog v-model="addBookAutomagically" ></add-book-auto-dialog>
-        <add-book-manual-dialog v-model="addBookManually" ></add-book-manual-dialog>
+        <add-book-manual-dialog v-model="addBookManually" @add-item="addBook"></add-book-manual-dialog>
+        <edit-book-dialog v-model:model-value="editDialog" v-model:book="editData" @edit-item="editBook"></edit-book-dialog>
 
       </q-page-container>
 
@@ -47,8 +48,8 @@
                 direction="up"
                 color="accent"
         >
-          <q-fab-action external-label label-position="left" @click="addBookManually = !addBookManually" color="primary" icon="menu_book" label="Add Manually" ></q-fab-action>
-          <q-fab-action external-label label-position="left" @click="addBookAutomagically = !addBookAutomagically" color="primary" icon="collections_bookmark" label="Add Automagically" ></q-fab-action>
+          <q-fab-action external-label label-position="left" @click="addBookManually = true" color="primary" icon="menu_book" label="Add Manually" ></q-fab-action>
+          <q-fab-action external-label label-position="left" @click="addBookAutomagically = true" color="primary" icon="collections_bookmark" label="Add Automagically" ></q-fab-action>
         </q-fab>
       </q-page-sticky>
       </q-page>
@@ -79,6 +80,7 @@
 <script src="js/components/BookList.js"></script>
 <script src="js/components/BookListItem.js"></script>
 <script src="js/components/Dialogs/Dialog.js"></script>
+<script src="js/components/Dialogs/EditBookDialog.js"></script>
 <script src="js/components/Dialogs/AddBook/AddBookAutoDialog.js"></script>
 <script src="js/components/Dialogs/AddBook/AddBookManualDialog.js"></script>
 

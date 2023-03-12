@@ -67,8 +67,9 @@ app.component('BookList', {
     template: `
     <div class="constrain">
     <div class="row q-pa-lg">
-        <div class="col col-4 q-px-lg q-my-auto">
+        <div class="col col-md-4 col-12 q-pa-md">
             <q-btn-toggle
+              class="justify-center"
               v-model="sortCategory"
               toggle-color="primary"
               :options="[
@@ -78,7 +79,7 @@ app.component('BookList', {
               ]"
             />
         </div>
-        <div class="col col-8">
+        <div class="col col-md-8 col-12">
             <q-input
             v-model="search"
             filled
@@ -92,11 +93,8 @@ app.component('BookList', {
         </div>
     </div>
     <div class="row justify-center items-center content-center">
-        <div class="col">
+        <div class="q-pl-xl">
             <q-toggle v-model="bookmarkToggle" label="Show Only Bookmarks" />
-        </div>
-        <div class="col">
-<!--            <q-btn @click="clear">Clear Search</q-btn>-->
         </div>
         
 </div>

@@ -1,4 +1,4 @@
-app.component('AddBookDialog', {
+app.component('Dialog', {
     props: {
         dialogID: {},
         title: {},

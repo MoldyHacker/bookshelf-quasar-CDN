@@ -46,7 +46,7 @@ app.component('BookList', {
         filterByTitle(books) {
             return this.sortCategory === 'title' ?
             this.search ? books.filter(book =>
-                !book.title.toLowerCase().indexOf(this.search.toLowerCase()))
+                book.title.toLowerCase().includes(this.search.toLowerCase()))
                 : books
                 :books
         },
@@ -54,7 +54,7 @@ app.component('BookList', {
         filterByAuthor(books) {
             return this.sortCategory === 'author' ?
             this.search ? books.filter(book =>
-                !book.author.toLowerCase().indexOf(this.search.toLowerCase()))
+                book.author.toLowerCase().includes(this.search.toLowerCase()))
                 : books
                 :books
         },
@@ -79,7 +79,7 @@ app.component('BookList', {
               ]"
             />
         </div>
-        <div class="col col-md-8 col-12">
+        <div class="col col-md-8 col-12 align-center">
             <q-input
             v-model="search"
             filled

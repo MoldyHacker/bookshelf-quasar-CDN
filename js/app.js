@@ -17,7 +17,7 @@ const app = Vue.createApp({
 
     methods: {
         addBook(book) {
-            book.id = this.books.length + 1;
+            book.id = Date.now();
             this.books.push(book);
         },
         editIt(book) {

@@ -12,7 +12,7 @@
   <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/animate.css@^4.0.0/animate.min.css" rel="stylesheet" type="text/css">
 <!--  <link href="https://cdn.jsdelivr.net/npm/quasar@2.9.1/dist/quasar.prod.css" rel="stylesheet" type="text/css">-->
-  <link href="https://cdn.jsdelivr.net/npm/quasar@2.11.8/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/quasar@2.11.8/dist/quasar.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/app.css">
 </head>
 
@@ -37,8 +37,8 @@
       </q-header>
 
       <q-page-container>
-<!--        <router-view />-->
-        <book-list :books="books" :sortText="sortText" :filterText="filterText" @bookmark-book="bookmarkBook" @delete-book="removeBook" @edit-book="editBook; editDialog = true"></book-list>
+        <search-component @search-obj="searchUpdate"></search-component>
+        <book-list :books="books" :search="searchObj" @bookmark-book="bookmarkBook" @delete-book="removeBook" @edit-book="editBook; editDialog = true"></book-list>
 
         <add-book-auto-dialog v-model="addBookAutomagically" ></add-book-auto-dialog>
         <add-book-manual-dialog v-model="addBookManually" @add-item="addBook"></add-book-manual-dialog>
@@ -81,6 +81,7 @@
 <script src="js/app.js"></script>
 <script src="js/app-quasar.js"></script>
 <!--Components-->
+<script src="js/components/SearchComponents/SearchComponent.js"></script>
 <script src="js/components/BookList.js"></script>
 <script src="js/components/BookListItem.js"></script>
 <script src="js/components/Dialogs/Dialog.js"></script>

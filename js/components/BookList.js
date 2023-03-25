@@ -4,29 +4,28 @@ app.component('BookList', {
             type: Array,
             required: true,
         },
-        filterText: String,
-        sortText: {
-            type: String,
-            default: 'author',
-        },
-        v: {
-            type: Boolean,
-            default: true,
+        search: {
+            type: Object,
+            default: {
+                sortCategory: 'title',
+                searchTerm: '',
+                bookmark: false
+            }
         },
     },
     data() {
         return {
-            filterText: '',
-            sortCategory: 'title',
-            search: '',
-            bookmarkToggle: false,
-
+            // filterText: '',
+            // sortCategory: 'title',
+            // // search: '',
+            // bookmarkToggle: false,
         }
     },
     computed: {
         returnFiltered() {
             return this.filterByTitle(this.filterByAuthor(this.filterByBookmarked(this.books)))
         },
+
         sortedByTitle() {
             console.log(this.sortText);
             return this.books.sort((a,b) => {
@@ -41,20 +40,20 @@ app.component('BookList', {
 
         clear(){this.filterText = ''; this.sortCategory = ''; this.search = '';},
 
-        filterByBookmarked(books) {return this.bookmarkToggle ? books.filter((book) => book.bookmark) : books},
+        filterByBookmarked(books) {return this.search.bookmark ? books.filter((book) => book.bookmark) : books},
 
         filterByTitle(books) {
-            return this.sortCategory === 'title' ?
-            this.search ? books.filter(book =>
-                book.title.toLowerCase().includes(this.search.toLowerCase()))
+            return this.search.sortCategory === 'title' ?
+            this.search.searchTerm ? books.filter(book =>
+                book.title.toLowerCase().includes(this.search.searchTerm.toLowerCase()))
                 : books
                 :books
         },
 
         filterByAuthor(books) {
-            return this.sortCategory === 'author' ?
-            this.search ? books.filter(book =>
-                book.author.toLowerCase().includes(this.search.toLowerCase()))
+            return this.search.sortCategory === 'author' ?
+            this.search.searchTerm ? books.filter(book =>
+                book.author.toLowerCase().includes(this.search.searchTerm.toLowerCase()))
                 : books
                 :books
         },
@@ -99,6 +98,7 @@ app.component('BookList', {
             
         </div>
     </div>
+    
     <q-page class="row items-baseline justify-evenly constrain">
         <div class="q-pa-md row items-start q-gutter-md constrain justify-center">
             <BookListItem

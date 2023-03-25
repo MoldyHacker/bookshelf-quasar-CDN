@@ -6,6 +6,11 @@ const app = Vue.createApp({
                 { id: 2, title: 'Paper Towns', author: 'John Green', bookmark: true, tags: []},
                 { id: 3, title: 'Best airlines', author:'N/A', bookmark: false, tags: []},
             ],
+            searchObj: {
+                sortCategory: 'title',
+                searchTerm: '',
+                bookmark: false,
+            },
             addBookAutomagically: false,
             addBookManually: false,
             editDialog: false,
@@ -16,6 +21,10 @@ const app = Vue.createApp({
     },
 
     methods: {
+        searchUpdate(searchO) {
+            this.searchObj = searchO;
+            console.log('working', this.searchObj)
+        },
         addBook(book) {
             book.id = Date.now();
             this.books.push(book);

@@ -23,7 +23,7 @@ const app = Vue.createApp({
     methods: {
         searchUpdate(searchO) {
             this.searchObj = searchO;
-            console.log('working', this.searchObj)
+            // console.log('working', this.searchObj)
         },
         addBook(book) {
             book.id = Date.now();

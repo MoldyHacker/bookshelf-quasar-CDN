@@ -7,10 +7,6 @@ app.component('SearchComponent', {
                 searchTerm: '',
                 bookmark: false,
             },
-            filterText: '',
-            sortCategory: 'title',
-            search: '',
-            bookmarkToggle: false,
         }
     },
 
@@ -19,7 +15,7 @@ app.component('SearchComponent', {
     watch: {
         searchObj: {
             deep: true,
-            handler: function (nv, ov) {
+            handler: function () {
                 // console.log('searchObj', this.searchObj);
                 this.$emit('search-obj', this.searchObj)
             }

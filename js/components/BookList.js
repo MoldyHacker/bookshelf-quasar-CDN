@@ -13,14 +13,7 @@ app.component('BookList', {
             }
         },
     },
-    data() {
-        return {
-            // filterText: '',
-            // sortCategory: 'title',
-            // // search: '',
-            // bookmarkToggle: false,
-        }
-    },
+    data() {return {}},
     computed: {
         returnFiltered() {
             return this.filterByTitle(this.filterByAuthor(this.filterByBookmarked(this.books)))
@@ -63,53 +56,19 @@ app.component('BookList', {
         sortByBookmark() {this.books.sort((a,b) => a.bookmark - b.bookmark)},
     },
 
-    template: `
-    <div class="constrain">
-        <div class="row q-pa-lg">
-            <div class="col col-md-4 col-12 q-pa-md">
-                <q-btn-toggle
-                  class="justify-center"
-                  v-model="sortCategory"
-                  toggle-color="primary"
-                  :options="[
-                    {label: 'Title', value: 'title'},
-                    {label: 'Author', value: 'author'},
-                    {label: 'Tag', value: 'tag'},
-                  ]"
-                />
-            </div>
-            <div class="col col-md-8 col-12 align-center">
-                <q-input
-                v-model="search"
-                filled
-                label="Search by..."
-                :placeholder="sortCategory"
-                >
-                    <template v-slot:append>
-                        <q-icon name="search" />
-                    </template>
-                </q-input>
-            </div>
-        </div>
-        <div class="row justify-center items-center content-center">
-            <div class="q-pl-xl">
-                <q-toggle v-model="bookmarkToggle" label="Show Only Bookmarks" />
-            </div>
-            
-        </div>
-    </div>
-    
+    template: `    
     <q-page class="row items-baseline justify-evenly constrain">
         <div class="q-pa-md row items-start q-gutter-md constrain justify-center">
             <BookListItem
-              v-for="book in returnFiltered"
-              :book="book"
-              :key="book.id"
-              @bookmark-book="bookmarkIt"
-              @delete-book="deleteIt"
-              @edit-book="editIt"
+                v-for="book in returnFiltered"
+                :book="book"
+                :key="book.id"
+                @bookmark-book="bookmarkIt"
+                @delete-book="deleteIt"
+                @edit-book="editIt"
             />
-          </div>
+            <h3 class="animate__animated animate__headShake noBooks" v-if="!returnFiltered.length">Sorry! No {{ this.search.bookmark ? 'bookmarks' : 'books' }} available.</h3>
+        </div>
     </q-page>
     `
 })

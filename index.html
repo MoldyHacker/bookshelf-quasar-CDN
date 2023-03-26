@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-  WARNING! Make sure that you match all Quasar related
-  tags to the same version! (Below it's "@2.9.1")
--->
-
 <head>
   <title>Bookshelf</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,9 +13,7 @@
 </head>
 
 <body>
-<!-- example of injection point where you write your app template -->
 <div id="app">
-<!--  <template>-->
     <q-layout view="hHh lpR fFf">
 
       <q-header elevated class="bg-primary text-white" height-hint="98">
@@ -38,6 +31,7 @@
       </q-header>
 
       <q-page-container>
+
         <search-component @search-obj="searchUpdate"></search-component>
 
         <book-list :books="books" :search="searchObj" @bookmark-book="bookmarkBook" @delete-book="removeBook" @edit-book="editItem"></book-list>
@@ -74,10 +68,9 @@
       </q-footer>
 
     </q-layout>
-<!--  </template>-->
 </div>
 
-<!-- Add the following at the end of your body tag -->
+<!--Frameworks and Libraries-->
 <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quasar@2.9.1/dist/quasar.umd.js"></script>
 <!--Configs-->

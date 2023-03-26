@@ -22,28 +22,40 @@ const app = Vue.createApp({
     },
 
     methods: {
+        // update the Search Object from the search bar component
         searchUpdate(searchO) {
             this.searchObj = searchO;
             // console.log('working', this.searchObj)
         },
+
+        // Book manipulation
+        // Add Book
         addBook(book) {
             book.id = Date.now();
             this.books.push(book);
             // console.log('book added', book);
         },
+
+        // Initial Edit Book and open edit dialog
         editItem(book) {
             this.editData = book;
             this.editDialog = true;
-            console.log('edit book', this.editData);
+            // console.log('edit book', this.editData);
         },
+
+        // Save the edited book to the array
         saveItem(book) {
             let index = this.books.indexOf(book.id);
             this.books[index] = book;
         },
+
+        // Remove a book from the array
         removeBook(book) {
             this.books.splice(this.books.indexOf(book),1);
             // console.log('removed book', book);
         },
+
+        // Toggle a bookmark on a book
         bookmarkBook(book) {
             this.books[this.books.indexOf(book)].bookmark = !book.bookmark;
             // console.log('bookmarked book', book);

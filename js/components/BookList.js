@@ -46,7 +46,7 @@ app.component('BookList', {
         // Edit the book
         editIt(book){
             this.$emit('edit-book', book);
-            console.log('edit b', book);
+            // console.log('edit b', book);
         },
 
         // If bookmark toggle is selected from searchbar, filter to only bookmarked books

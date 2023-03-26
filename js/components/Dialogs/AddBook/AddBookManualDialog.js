@@ -44,9 +44,9 @@ app.component('AddBookManualDialog', {
     <q-dialog persistent v-model="value">
         <q-card>
     <!--header-->
-        <q-card-section>
-            <span class="text-h6">Add Book Manually</span>
-            <q-btn flat rounded @click="newBook.bookmark = !newBook.bookmark" :icon="newBook.bookmark ? 'bookmark' : 'bookmark_outline' "/>
+        <q-card-section class="row">
+            <span class="col-10 text-h6">Add Book Manually</span>
+            <q-btn class="col" flat rounded @click="newBook.bookmark = !newBook.bookmark" :icon="newBook.bookmark ? 'bookmark' : 'bookmark_outline' "/>
         </q-card-section>
     
     <!--Body-->

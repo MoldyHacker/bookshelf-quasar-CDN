@@ -24,7 +24,6 @@ app.component('SearchComponent', {
         <div class="row q-pa-lg">
             <div class="col col-md-4 col-12 q-pa-md">
                 <q-btn-toggle
-                  class="justify-center"
                   v-model="searchObj.sortCategory"
                   toggle-color="primary"
                   :options="[

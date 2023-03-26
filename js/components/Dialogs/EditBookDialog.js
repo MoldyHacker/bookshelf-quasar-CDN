@@ -28,8 +28,9 @@ app.component('EditBookDialog', {
     template: `
     <q-dialog persistent v-model="value">
         <q-card>
-          <q-card-section>
-            <div class="text-h6">Edit Book</div>
+          <q-card-section class="row">
+            <span class="col-10 text-h6">Edit Book</span>
+            <q-btn class="col" flat rounded @click="book.bookmark = !book.bookmark" :icon="book.bookmark ? 'bookmark' : 'bookmark_outline' "/>
           </q-card-section>
 
           <q-card-section class="q-pt-none q-gutter-sm">

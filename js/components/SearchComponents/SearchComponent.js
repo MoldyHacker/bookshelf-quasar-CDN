@@ -1,5 +1,4 @@
 app.component('SearchComponent', {
-    props: {},
     data() {
         return {
             searchObj: {
@@ -10,8 +9,6 @@ app.component('SearchComponent', {
         }
     },
 
-    computed: {},
-
     watch: {
         searchObj: {
             deep: true,
@@ -20,10 +17,6 @@ app.component('SearchComponent', {
                 this.$emit('search-obj', this.searchObj)
             }
         }
-    },
-
-    methods: {
-        clear(){this.filterText = ''; this.sortCategory = ''; this.search = '';},
     },
 
     template: `

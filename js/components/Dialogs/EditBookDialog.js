@@ -1,16 +1,14 @@
 app.component('EditBookDialog', {
     props: ['modelValue', 'book'],
+    // props: {
+    //     modelValue: Boolean,
+    //     book: {
+    //         type: Object,
+    //         required: true,
+    //     }
+    // },
     emits: ['update:modelValue'],
-    data() {
-        return {
-            newBook: {
-                title: '',
-                author: '',
-                bookmark: '',
-                tags: '',
-            }
-        }
-    },
+    data() {return {}},
     computed: {
         value: {
             get() {
@@ -22,15 +20,10 @@ app.component('EditBookDialog', {
         }
     },
     methods: {
-        editBook() {
-            this.$emit('edit-item', this.newBook);
-            console.log(this.newBook);
-            this.resetBook();
-
+        saveBook() {
+            this.$emit('save-book', this.book);
+            // console.log('the book to save', this.book);
         },
-        resetBook() {
-            console.log('edit the book',this.book)
-        }
     },
     template: `
     <q-dialog persistent v-model="value">
@@ -40,12 +33,12 @@ app.component('EditBookDialog', {
           </q-card-section>
 
           <q-card-section class="q-pt-none q-gutter-sm">
-            <q-input autofocus filled v-model="book" label="Title">
+            <q-input autofocus filled v-model="book.title" label="Title">
               <template v-slot:prepend>
                 <q-icon name="menu_book" />
               </template>
             </q-input>
-            <q-input filled v-model="newBook.author" label="Author">
+            <q-input filled v-model="book.author" label="Author">
               <template v-slot:prepend>
                 <q-icon name="person" />
               </template>
@@ -53,8 +46,8 @@ app.component('EditBookDialog', {
           </q-card-section>
 
           <q-card-actions align="right" class="text-primary">
-            <q-btn flat label="Save" icon="save" @click="addBook" v-close-popup />
-            <q-btn flat label="Close" icon="delete" @click="resetBook" v-close-popup />
+            <q-btn flat label="Save" icon="save" @click="saveBook" v-close-popup />
+            <q-btn flat label="Close" icon="cancel" @click="resetBook" v-close-popup />
           </q-card-actions>
         </q-card>
       </q-dialog>

@@ -10,7 +10,7 @@ app.component('AddBookManualDialog', {
             newBook: {
                 title: '',
                 author: '',
-                bookmark: '',
+                bookmark: false,
                 tags: '',
             }
         }
@@ -30,13 +30,12 @@ app.component('AddBookManualDialog', {
             this.$emit('add-item', this.newBook);
             console.log(this.newBook);
             this.resetBook();
-
         },
         resetBook() {
             this.newBook = {
                 title: '',
                 author: '',
-                bookmark: '',
+                bookmark: false,
                 tags: '',
             }
         }
@@ -44,28 +43,33 @@ app.component('AddBookManualDialog', {
     template: `
     <q-dialog persistent v-model="value">
         <q-card>
-          <q-card-section>
-            <div class="text-h6">Add Book Manually</div>
-          </q-card-section>
-
-          <q-card-section class="q-pt-none q-gutter-sm">
+    <!--header-->
+        <q-card-section>
+            <span class="text-h6">Add Book Manually</span>
+            <q-btn flat rounded @click="newBook.bookmark = !newBook.bookmark" :icon="newBook.bookmark ? 'bookmark' : 'bookmark_outline' "/>
+        </q-card-section>
+    
+    <!--Body-->
+        <q-card-section class="q-pt-none q-gutter-sm">
+        <!--Title-->
             <q-input autofocus filled v-model="newBook.title" label="Title">
-              <template v-slot:prepend>
-                <q-icon name="menu_book" />
-              </template>
+                <template v-slot:prepend>
+                    <q-icon name="menu_book" />
+                </template>
             </q-input>
+        <!--Author-->
             <q-input filled v-model="newBook.author" label="Author">
-              <template v-slot:prepend>
-                <q-icon name="person" />
-              </template>
+                <template v-slot:prepend>
+                    <q-icon name="person" />
+                </template>
             </q-input>
-          </q-card-section>
+        </q-card-section>
 
-          <q-card-actions align="right" class="text-primary">
+        <q-card-actions align="right" class="text-primary">
             <q-btn flat label="Save" icon="save" @click="addBook" v-close-popup />
             <q-btn flat label="Close" icon="delete" @click="resetBook" v-close-popup />
-          </q-card-actions>
+        </q-card-actions>
         </q-card>
-      </q-dialog>
+    </q-dialog>
     `
 })

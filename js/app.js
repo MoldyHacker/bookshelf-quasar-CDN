@@ -6,17 +6,18 @@ const app = Vue.createApp({
                 { id: 2, title: 'Paper Towns', author: 'John Green', bookmark: true, tags: []},
                 { id: 3, title: 'Best airlines', author:'N/A', bookmark: false, tags: []},
             ],
+            // Searchbar Object
             searchObj: {
                 sortCategory: 'title',
                 searchTerm: '',
                 bookmark: false,
             },
+            // Dialogs / Modals Controls
             addBookAutomagically: false,
             addBookManually: false,
             editDialog: false,
-            editData: 'book',
-            sortText: 'title',
-            filterText: 'bookmark',
+
+            editData: {},
         }
     },
 
@@ -28,21 +29,24 @@ const app = Vue.createApp({
         addBook(book) {
             book.id = Date.now();
             this.books.push(book);
+            // console.log('book added', book);
         },
-        editIt(book) {
-            console.log('edit book', book);
-            this.$emit('editTheBook', book);
+        editItem(book) {
+            this.editData = book;
             this.editDialog = true;
+            console.log('edit book', this.editData);
         },
-        editBook(book) {
-
+        saveItem(book) {
+            let index = this.books.indexOf(book.id);
+            this.books[index] = book;
         },
         removeBook(book) {
-            console.log('removing book')
             this.books.splice(this.books.indexOf(book),1);
+            // console.log('removed book', book);
         },
         bookmarkBook(book) {
             this.books[this.books.indexOf(book)].bookmark = !book.bookmark;
+            // console.log('bookmarked book', book);
         }
     }
 })

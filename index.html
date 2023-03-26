@@ -39,14 +39,17 @@
 
       <q-page-container>
         <search-component @search-obj="searchUpdate"></search-component>
-        <book-list :books="books" :search="searchObj" @bookmark-book="bookmarkBook" @delete-book="removeBook" @edit-book="editBook; editDialog = true"></book-list>
+
+        <book-list :books="books" :search="searchObj" @bookmark-book="bookmarkBook" @delete-book="removeBook" @edit-book="editItem"></book-list>
 
         <add-book-auto-dialog v-model="addBookAutomagically" ></add-book-auto-dialog>
         <add-book-manual-dialog v-model="addBookManually" @add-item="addBook"></add-book-manual-dialog>
-        <edit-book-dialog v-model:model-value="editDialog" v-model:book="editData" @edit-item="editBook"></edit-book-dialog>
+
+        <edit-book-dialog v-model:model-value="editDialog" :book="editData" @save-book="saveItem"></edit-book-dialog>
 
       </q-page-container>
 
+      <!--FAB for adding a book-->
       <q-page-sticky position="bottom-right" :offset="[18, 18]">
         <q-fab
                 icon="add"

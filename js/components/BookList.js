@@ -6,6 +6,7 @@ app.component('BookList', {
         },
         search: {
             type: Object,
+            required: true,
             default: {
                 sortCategory: 'title',
                 searchTerm: '',
@@ -13,8 +14,9 @@ app.component('BookList', {
             }
         },
     },
-    data() {return {}},
+
     computed: {
+        // Return all the books filtered by the selected methods
         returnFiltered() {
             return this.filterByTitle(this.filterByAuthor(this.filterByBookmarked(this.books)))
         },
@@ -26,13 +28,28 @@ app.component('BookList', {
             });
         },
     },
+
     methods: {
-        bookmarkIt(book){this.$emit('bookmark-book', book); console.log('bookmark b', book)},
-        deleteIt(book){this.$emit('delete-book', book); console.log('delete b', book)},
-        editIt(book){this.$emit('edit-book', book); console.log('edit b', {book, v})},
+        // Book Manipulations
+        // Bookmark the book
+        bookmarkIt(book){
+            this.$emit('bookmark-book', book);
+            // console.log('bookmark b', book)
+        },
 
-        clear(){this.filterText = ''; this.sortCategory = ''; this.search = '';},
+        // Delete the book
+        deleteIt(book){
+            this.$emit('delete-book', book);
+            // console.log('delete b', book)
+        },
 
+        // Edit the book
+        editIt(book){
+            this.$emit('edit-book', book);
+            console.log('edit b', book);
+        },
+
+        // If bookmark toggle is selected from searchbar, filter to only bookmarked books
         filterByBookmarked(books) {return this.search.bookmark ? books.filter((book) => book.bookmark) : books},
 
         filterByTitle(books) {
@@ -67,7 +84,9 @@ app.component('BookList', {
                 @delete-book="deleteIt"
                 @edit-book="editIt"
             />
-            <h3 class="animate__animated animate__headShake noBooks" v-if="!returnFiltered.length">Sorry! No {{ this.search.bookmark ? 'bookmarks' : 'books' }} available.</h3>
+            <h3 class="animate__animated animate__headShake noBooks" v-if="!returnFiltered.length">
+                Sorry! No {{ this.search.bookmark ? 'bookmarks' : 'books' }} available.
+            </h3>
         </div>
     </q-page>
     `

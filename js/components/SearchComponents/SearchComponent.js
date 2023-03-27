@@ -14,7 +14,7 @@ app.component('SearchComponent', {
             deep: true,
             handler: function () {
                 // console.log('searchObj', this.searchObj);
-                this.$emit('search-obj', this.searchObj)
+                this.$emit('search-obj', this.searchObj);
             }
         }
     },

@@ -40,13 +40,16 @@ const app = Vue.createApp({
         editItem(book) {
             this.editData = book;
             this.editDialog = true;
-            // console.log('edit book', this.editData);
+            console.log('edit book', this.editData);
         },
 
         // Save the edited book to the array
         saveItem(book) {
             let index = this.books.indexOf(book.id);
             this.books[index] = book;
+            // console.log('index',this.books.indexOf(book.id))
+            // this.books.splice(this.books.indexOf(book.id), 1, book)
+            // console.log('saved book', this.books[index])
         },
 
         // Remove a book from the array

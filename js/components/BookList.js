@@ -52,6 +52,7 @@ app.component('BookList', {
         // If bookmark toggle is selected from searchbar, filter to only bookmarked books
         filterByBookmarked(books) {return this.search.bookmark ? books.filter((book) => book.bookmark) : books},
 
+        // Filter books array by Title
         filterByTitle(books) {
             return this.search.sortCategory === 'title' ?
             this.search.searchTerm ? books.filter(book =>
@@ -60,6 +61,7 @@ app.component('BookList', {
                 :books
         },
 
+        // Filter books array by Author
         filterByAuthor(books) {
             return this.search.sortCategory === 'author' ?
             this.search.searchTerm ? books.filter(book =>

@@ -1,4 +1,4 @@
-app.component('BookListItem', {
+app.component('BookListItemEditable', {
     props: {
         book: {
             type: Object,
@@ -42,12 +42,7 @@ app.component('BookListItem', {
     <!--mouseover buttons-->
         <div class="card-actions book-card-actions">
             <q-card-actions align="right" v-show="visible">
-    <!--        <q-btn flat icon="info" @click="$emit('info-book',book)">-->
-    <!--          <q-tooltip anchor="top middle" self="bottom middle">-->
-    <!--            Info-->
-    <!--          </q-tooltip>-->
-    <!--        </q-btn>-->
-    
+                
                 <q-btn flat icon="delete" @click="$emit('delete-book', book)">
                     <q-tooltip anchor="top middle" self="bottom middle">
                     Delete
@@ -59,7 +54,6 @@ app.component('BookListItem', {
                     Edit
                     </q-tooltip>
                 </q-btn>
-                
                 
             </q-card-actions>
         </div>

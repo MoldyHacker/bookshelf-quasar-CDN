@@ -8,7 +8,10 @@ app.component('EditBookDialog', {
     //     }
     // },
     emits: ['update:modelValue'],
-    data() {return {}},
+    data() {
+        return {
+        }
+    },
     computed: {
         value: {
             get() {
@@ -22,7 +25,7 @@ app.component('EditBookDialog', {
     methods: {
         saveBook() {
             this.$emit('save-book', this.book);
-            // console.log('the book to save', this.book);
+            console.log('the book to save', this.book);
         },
     },
     template: `
@@ -46,10 +49,10 @@ app.component('EditBookDialog', {
             </q-input>
           </q-card-section>
 
-          <q-card-actions align="right" class="text-primary">
+        <q-card-actions align="right" class="text-primary">
+            <q-btn flat label="Close" icon="cancel" v-close-popup />
             <q-btn flat label="Save" icon="save" @click="saveBook" v-close-popup />
-            <q-btn flat label="Close" icon="cancel" @click="resetBook" v-close-popup />
-          </q-card-actions>
+        </q-card-actions>
         </q-card>
       </q-dialog>
     `

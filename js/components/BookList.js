@@ -31,11 +31,6 @@ app.component('BookList', {
 
     methods: {
         // Book Manipulations
-        // Bookmark the book
-        bookmarkIt(book){
-            this.$emit('bookmark-book', book);
-            // console.log('bookmark b', book)
-        },
 
         // Delete the book
         deleteIt(book){
@@ -43,20 +38,14 @@ app.component('BookList', {
             // console.log('delete b', book)
         },
 
-        // Edit the book
-        editIt(book){
-            this.$emit('edit-book', book);
-            // console.log('edit b', book);
-        },
-
         // If bookmark toggle is selected from searchbar, filter to only bookmarked books
-        filterByBookmarked(books) {return this.search.bookmark ? books.filter((book) => book.bookmark) : books},
+        filterByBookmarked(books) {return this.search.bookmark ? books.filter((book) => book.book.bookmark) : books},
 
         // Filter books array by Title
         filterByTitle(books) {
             return this.search.sortCategory === 'title' ?
             this.search.searchTerm ?
-                books.filter(book => book.title.toLowerCase().includes(this.search.searchTerm.toLowerCase()))
+                books.filter(book => book.book.title.toLowerCase().includes(this.search.searchTerm.toLowerCase()))
                 : books
                 : books
         },
@@ -64,12 +53,13 @@ app.component('BookList', {
         // Filter books array by Author
         filterByAuthor(books) {
             return this.search.sortCategory === 'author' ?
-            this.search.searchTerm ? books.filter(book =>
-                book.author.toLowerCase().includes(this.search.searchTerm.toLowerCase()))
+            this.search.searchTerm ?
+                books.filter(book => book.book.author.toLowerCase().includes(this.search.searchTerm.toLowerCase()))
                 : books
                 :books
         },
 
+        // Not implemented
         sortByTitle() {this.books.sort((a,b) => a.title - b.title)},
         sortByAuthor() {this.books.sort((a,b) => a.author - b.author)},
         sortByBookmark() {this.books.sort((a,b) => a.bookmark - b.bookmark)},
@@ -82,10 +72,9 @@ app.component('BookList', {
                 v-for="book in returnFiltered"
                 :book="book"
                 :key="book.book.id"
-                @bookmark-book="bookmarkIt"
                 @delete-book="deleteIt"
-                @edit-book="editIt"
             />
+            
             <h3 class="animate__animated animate__headShake noBooks" v-if="!returnFiltered.length">
                 Sorry! No {{ this.search.bookmark ? 'bookmarks' : 'books' }} available.
             </h3>

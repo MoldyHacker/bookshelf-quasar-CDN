@@ -37,11 +37,10 @@ const app = Vue.createApp({
         addBook(book) {
             book.id = Date.now();
             this.books.push(new BookItem( new Book(book.title, book.author, book.bookmark)));
-            console.log(this.books);
+            // console.log(this.books);
             // console.log('book added', book);
         },
-
-
+        
         // Remove a book from the array
         removeBook(book) {
             this.books.splice(this.books.indexOf(book),1);

@@ -37,16 +37,10 @@ app.component('BookListItem', {
             <span class="text-subtitle2 q-pl-md">{{ trunc(book.book.author, 18) }}</span>
         </q-card-section>
 
-
     <!--mouseover buttons-->
         <div class="card-actions book-card-actions">
             <q-card-actions align="right" v-show="visible">
-    <!--        <q-btn flat icon="info" @click="$emit('info-book',book)">-->
-    <!--          <q-tooltip anchor="top middle" self="bottom middle">-->
-    <!--            Info-->
-    <!--          </q-tooltip>-->
-    <!--        </q-btn>-->
-    
+                
                 <q-btn flat icon="delete" @click="$emit('delete-book', book)">
                     <q-tooltip anchor="top middle" self="bottom middle">
                     Delete
@@ -63,16 +57,6 @@ app.component('BookListItem', {
                 
             </q-card-actions>
         </div>
-
-        
-<!--        <q-expansion-item-->
-<!--        :label="book.tags != null ? book.tags.join(' ') : 'No #Tag available'"-->
-<!--        label-lines="1"-->
-<!--        >-->
-<!--          <q-card-section >-->
-<!--            {{ book.tags != null ? book.tags.join(' ') : 'No #Tag available' }}-->
-<!--          </q-card-section>-->
-<!--        </q-expansion-item>-->
     </q-card>
     `
 })

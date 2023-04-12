@@ -22,7 +22,7 @@ app.component('BookListItem', {
 
     template: `
     <q-card class="book-card" @mouseenter="visible = true" @mouseleave="visible = false" >
-
+    
     <!--Header-->
         <q-card-section horizontal class="card-header book-card-header">
             <q-btn flat rounded @click="book.bookmarkToggle()" :icon="book.book.bookmark ? 'bookmark' : 'bookmark_outline' "/>
@@ -53,10 +53,21 @@ app.component('BookListItem', {
                     </q-tooltip>
                 </q-btn>
                 
-                <edit-book-dialog v-model:model-value="editDialog" :book="book"></edit-book-dialog>
+<!--                <tool-tip-button />-->
                 
             </q-card-actions>
         </div>
+        
+        <edit-book-dialog v-model:model-value="editDialog" :book="book"></edit-book-dialog>
     </q-card>
     `
-})
+});
+
+//TODO add BookListItemBook?
+app.component('BookListItemBook',{
+    props: ['book'],
+    methods: {},
+    template: `
+    
+    `
+});

@@ -55,10 +55,10 @@ app.component('BookList', {
         // Filter books array by Title
         filterByTitle(books) {
             return this.search.sortCategory === 'title' ?
-            this.search.searchTerm ? books.filter(book =>
-                book.title.toLowerCase().includes(this.search.searchTerm.toLowerCase()))
+            this.search.searchTerm ?
+                books.filter(book => book.title.toLowerCase().includes(this.search.searchTerm.toLowerCase()))
                 : books
-                :books
+                : books
         },
 
         // Filter books array by Author
@@ -81,7 +81,7 @@ app.component('BookList', {
             <BookListItem
                 v-for="book in returnFiltered"
                 :book="book"
-                :key="book.id"
+                :key="book.book.id"
                 @bookmark-book="bookmarkIt"
                 @delete-book="deleteIt"
                 @edit-book="editIt"

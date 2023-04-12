@@ -8,7 +8,7 @@ app.component('BookListItem', {
     data() {
         return {
             visible: false, // mouseover buttons
-            updateKey: 0,
+            editDialog: false
         }
     },
     methods: {
@@ -16,8 +16,7 @@ app.component('BookListItem', {
         trunc(str, cha) { return str?.length > cha ? str.substring(0, cha) + '...' : str ?? 'N/A' },
 
         editBook(book) {
-            this.$emit('edit-book', book);
-            this.updateKey++;
+            this.editDialog = true;
         }
     },
 
@@ -26,8 +25,8 @@ app.component('BookListItem', {
 
     <!--Header-->
         <q-card-section horizontal class="card-header book-card-header">
-            <q-btn flat rounded @click="$emit('bookmark-book', book)" :icon="book.bookmark ? 'bookmark' : 'bookmark_outline' "/>
-            <span class="text-h6">{{ trunc(book.title, 38) }}</span>
+            <q-btn flat rounded @click="book.bookmarkToggle()" :icon="book.book.bookmark ? 'bookmark' : 'bookmark_outline' "/>
+            <span class="text-h6">{{ trunc(book.book.title, 38) }}</span>
         </q-card-section>
 
         <q-separator inset />
@@ -35,7 +34,7 @@ app.component('BookListItem', {
     <!--author-->
         <q-card-section class="q-pt-none q-pb-none">
             <q-icon color="black" name="person"  size="24px" />
-            <span class="text-subtitle2 q-pl-md">{{ trunc(book.author, 18) }}</span>
+            <span class="text-subtitle2 q-pl-md">{{ trunc(book.book.author, 18) }}</span>
         </q-card-section>
 
 
@@ -60,6 +59,7 @@ app.component('BookListItem', {
                     </q-tooltip>
                 </q-btn>
                 
+                <edit-book-dialog v-model:model-value="editDialog" :book="book"></edit-book-dialog>
                 
             </q-card-actions>
         </div>

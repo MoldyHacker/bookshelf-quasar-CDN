@@ -66,8 +66,8 @@ app.component('AddBookManualDialog', {
         </q-card-section>
 
         <q-card-actions align="right" class="text-primary">
-            <q-btn flat label="Save" icon="save" @click="addBook" v-close-popup />
             <q-btn flat label="Close" icon="delete" @click="resetBook" v-close-popup />
+            <q-btn flat label="Save" icon="save" @click="addBook" v-close-popup />
         </q-card-actions>
         </q-card>
     </q-dialog>

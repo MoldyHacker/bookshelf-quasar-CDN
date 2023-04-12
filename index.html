@@ -34,11 +34,13 @@
 
         <search-component @search-obj="searchUpdate"></search-component>
 
-        <book-list :books="books" :search="searchObj" @bookmark-book="bookmarkBook" @delete-book="removeBook" @edit-book="editItem"></book-list>
+        <book-list :books="books" :search="searchObj" @delete-book="removeBook"></book-list>
 
         <add-book-auto-dialog v-model="addBookAutomagically" ></add-book-auto-dialog>
         <add-book-manual-dialog v-model="addBookManually" @add-item="addBook"></add-book-manual-dialog>
-        <edit-book-dialog v-model:model-value="editDialog" :book="editData" @save-book="saveItem"></edit-book-dialog>
+
+
+
 
       </q-page-container>
 

@@ -7,12 +7,6 @@ const app = Vue.createApp({
                 new BookItem(new Book('Best airlines', 'N/A'), false),
             ],
 
-            // books: [
-            //     { id: 1, title: 'Harry Potter and the Sorcerers Stone', author: 'J.K. Rowling', bookmark: true, tags: ['#fantasy', '#magic', '#wonder', '#dark'] },
-            //     { id: 2, title: 'Paper Towns', author: 'John Green', bookmark: true, tags: []},
-            //     { id: 3, title: 'Best airlines', author:'N/A', bookmark: false, tags: []},
-            // ],
-
             // Searchbar Object
             searchObj: {
                 sortCategory: 'title',
@@ -22,7 +16,6 @@ const app = Vue.createApp({
             // Dialogs / Modals Controls
             addBookAutomagically: false,
             addBookManually: false,
-            state: true,
         }
     },
 

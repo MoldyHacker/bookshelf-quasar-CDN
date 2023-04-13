@@ -44,7 +44,17 @@ app.component('AddBookManualDialog', {
     <!--header-->
         <q-card-section class="row">
             <span class="col-10 text-h6">Add Book Manually</span>
-            <q-btn class="col" flat rounded @click="newBook.bookmark = !newBook.bookmark" :icon="newBook.bookmark ? 'bookmark' : 'bookmark_outline' "/>
+<!--            <q-btn class="col" flat rounded @click="newBook.bookmark = !newBook.bookmark" :icon="newBook.bookmark ? 'bookmark' : 'bookmark_outline' "/>-->
+            <q-checkbox
+                class="col"
+                v-model="newBook.bookmark"
+                checked-icon="bookmark"
+                unchecked-icon="bookmark_outline"
+                indeterminate-icon="help"
+                color="black"
+                size="48px"
+                dense
+            />
         </q-card-section>
     
     <!--Body-->

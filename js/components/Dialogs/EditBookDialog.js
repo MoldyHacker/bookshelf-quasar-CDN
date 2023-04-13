@@ -35,6 +35,7 @@ app.component('EditBookDialog', {
                 indeterminate-icon="help"
                 color="black"
                 size="48px"
+                dense
             />
             </q-card-section>
 

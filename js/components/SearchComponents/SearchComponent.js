@@ -6,6 +6,12 @@ app.component('SearchComponent', {
                 searchTerm: '',
                 bookmark: false,
             },
+            options: [
+                {label: 'Title', value: 'title'},
+                {label: 'Author', value: 'author'},
+                {label: 'Tag', value: 'tag'},
+            ],
+            placeholder: '',
         }
     },
 
@@ -18,6 +24,12 @@ app.component('SearchComponent', {
             }
         }
     },
+    
+    computed: {
+        returnCapitalized() {
+            return this.searchObj.sortCategory.charAt(0).toUpperCase() + this.searchObj.sortCategory.slice(1);
+        },
+    },
 
     template: `
         <div class="constrain">
@@ -26,11 +38,7 @@ app.component('SearchComponent', {
                 <q-btn-toggle
                   v-model="searchObj.sortCategory"
                   toggle-color="primary"
-                  :options="[
-                    {label: 'Title', value: 'title'},
-                    {label: 'Author', value: 'author'},
-                    {label: 'Tag', value: 'tag'},
-                  ]"
+                  :options="options"
                 />
             </div>
             <div class="col col-md-8 col-12 align-center">
@@ -38,7 +46,7 @@ app.component('SearchComponent', {
                 v-model="searchObj.searchTerm"
                 filled
                 label="Search by..."
-                :placeholder="searchObj.sortCategory"
+                :placeholder="returnCapitalized"
                 >
                     <template v-slot:append>
                         <q-icon name="search" />

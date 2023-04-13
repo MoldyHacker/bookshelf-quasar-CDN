@@ -39,7 +39,7 @@ app.component('BookList', {
         },
 
         // If bookmark toggle is selected from searchbar, filter to only bookmarked books
-        filterByBookmarked(books) {return this.search.bookmark ? books.filter((book) => book.book.bookmark) : books},
+        filterByBookmarked(books) {return this.search.bookmark ? books.filter((book) => book.bookmark) : books},
 
         // Filter books array by Title
         filterByTitle(books) {

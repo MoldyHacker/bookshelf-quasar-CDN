@@ -25,7 +25,15 @@ app.component('BookListItem', {
     
     <!--Header-->
         <q-card-section horizontal class="card-header book-card-header">
-            <q-btn flat rounded @click="book.bookmarkToggle()" :icon="book.book.bookmark ? 'bookmark' : 'bookmark_outline' "/>
+<!--            <q-btn flat rounded @click="book.bookmarkToggle()" :icon="book.bookmark ? 'bookmark' : 'bookmark_outline' "/>-->
+            <q-checkbox
+                v-model="book.bookmark"
+                checked-icon="bookmark"
+                unchecked-icon="bookmark_outline"
+                indeterminate-icon="help"
+                color="black"
+                size="48px"
+            />
             <span class="text-h6">{{ trunc(book.book.title, 38) }}</span>
         </q-card-section>
 

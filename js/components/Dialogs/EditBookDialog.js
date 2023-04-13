@@ -3,7 +3,7 @@ app.component('EditBookDialog', {
     emits: ['update:modelValue'],
     data() {
         return {
-            newBook: {...this.book.book},
+            newBook: {...this.book},
         }
     },
     computed: {
@@ -18,7 +18,7 @@ app.component('EditBookDialog', {
     },
     methods: {
         saveBook() {
-            this.book.book = {...this.newBook};
+            this.book = {...this.newBook};
         },
     },
     template: `
@@ -26,16 +26,25 @@ app.component('EditBookDialog', {
         <q-card>
             <q-card-section class="row">
                 <span class="col-10 text-h6">Edit Book</span>
-                <q-btn class="col" flat rounded @click="newBook.bookmark = !newBook.bookmark" :icon="newBook.bookmark ? 'bookmark' : 'bookmark_outline' "/>
+<!--                <q-btn class="col" flat rounded @click="newBook.bookmarkToggle()" :icon="newBook.bookmark ? 'bookmark' : 'bookmark_outline' "/>-->
+                <q-checkbox
+                class="col"
+                v-model="book.bookmark"
+                checked-icon="bookmark"
+                unchecked-icon="bookmark_outline"
+                indeterminate-icon="help"
+                color="black"
+                size="48px"
+            />
             </q-card-section>
 
             <q-card-section class="q-pt-none q-gutter-sm">
-                <q-input autofocus filled v-model="newBook.title" label="Title">
+                <q-input autofocus filled v-model="newBook.book.title" label="Title">
                     <template v-slot:prepend>
                         <q-icon name="menu_book" />
                     </template>
                 </q-input>
-                <q-input filled v-model="newBook.author" label="Author">
+                <q-input filled v-model="newBook.book.author" label="Author">
                     <template v-slot:prepend>
                         <q-icon name="person" />
                     </template>

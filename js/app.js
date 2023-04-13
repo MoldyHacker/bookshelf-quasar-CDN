@@ -2,9 +2,9 @@ const app = Vue.createApp({
     data(){
         return {
             books: [
-                new BookItem(new Book('Harry Potter and the Sorcerers Stone', 'J.K. Rowling', true)),
-                new BookItem(new Book('Paper Towns', 'John Green', true)),
-                new BookItem(new Book('Best airlines', 'N/A', false)),
+                new BookItem(new Book('Harry Potter and the Sorcerers Stone', 'J.K. Rowling'), true),
+                new BookItem(new Book('Paper Towns', 'John Green'), true),
+                new BookItem(new Book('Best airlines', 'N/A'), false),
             ],
 
             // books: [
@@ -22,6 +22,7 @@ const app = Vue.createApp({
             // Dialogs / Modals Controls
             addBookAutomagically: false,
             addBookManually: false,
+            state: true,
         }
     },
 
@@ -36,7 +37,7 @@ const app = Vue.createApp({
         // Add Book
         addBook(book) {
             book.id = Date.now();
-            this.books.push(new BookItem( new Book(book.title, book.author, book.bookmark)));
+            this.books.push(new BookItem( new Book(book.title, book.author), book.bookmark));
             // console.log(this.books);
             // console.log('book added', book);
         },

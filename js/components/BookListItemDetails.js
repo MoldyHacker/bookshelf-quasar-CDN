@@ -1,5 +1,10 @@
 app.component('BookListItemDetails',{
-	props: ['book'],
+	props: {
+		book: {
+			type: Array,
+			required: true,
+		},
+	},
 	data() {
 		return {
 			visible: false, // mouseover buttons

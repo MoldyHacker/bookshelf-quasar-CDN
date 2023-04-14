@@ -19,6 +19,7 @@ app.component('EditBookDialog', {
     methods: {
         saveBook() {
             this.book = {...this.newBook};
+            this.$emit('save-book',this.newBook)
         },
     },
     template: `

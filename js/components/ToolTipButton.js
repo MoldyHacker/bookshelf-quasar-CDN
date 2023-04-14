@@ -12,13 +12,9 @@ app.component('ToolTipButton',{
       type: String,
       default: '',
     },
-    click: function (){},
-  },
-  methods: {
-
   },
   template: `
-  <q-btn flat :icon="icon" :label="label" @click="click">
+  <q-btn flat :icon="icon" :label="label">
     <q-tooltip anchor="top middle" self="bottom middle">
     {{ toolTip }}
     </q-tooltip>

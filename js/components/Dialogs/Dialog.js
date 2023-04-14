@@ -22,7 +22,7 @@ app.component('Dialog', {
                     </slot>
                 </div>
             </q-card-section>
-          
+            
             <q-card-section class="q-pt-none">
             Sorry! This feature is not available yet...
             </q-card-section>

@@ -1,6 +1,6 @@
 app.component('EditBookDialog', {
     props: ['modelValue', 'book'],
-    emits: ['update:modelValue'],
+    emits: ['update:modelValue', 'save-book'],
     data() {
         return {
             newBook: {...this.book},

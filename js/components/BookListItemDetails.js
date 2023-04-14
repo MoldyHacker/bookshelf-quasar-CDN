@@ -1,7 +1,7 @@
 app.component('BookListItemDetails',{
 	props: {
 		book: {
-			type: Array,
+			type: Object,
 			required: true,
 		},
 	},
@@ -38,7 +38,7 @@ app.component('BookListItemDetails',{
         <div class="card-actions book-card-actions">
             <q-card-actions align="right" v-show="visible">
                 <slot name='buttons'>
-                    <tool-tip-button icon="warning" toolTip="Warning" @click="$emit('delete-book', book)" />
+                    <tool-tip-button icon="warning" toolTip="Warning" />
                 </slot>
             </q-card-actions>
         </div>
